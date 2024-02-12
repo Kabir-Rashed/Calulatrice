@@ -1,0 +1,501 @@
+﻿@page "/"
+
+
+<style>
+    body {
+        background-color: #1a1625;
+    }
+
+    h2 {
+        color: #ba9ffb;
+        margin-top: 5px;
+        font-weight: 400;
+    }
+
+    p {
+        color: #8b8b8b;
+    }
+
+    .form-control {
+        background-color: #7a5af5;
+        color: #1a1625;
+    }
+</style>
+
+
+<PageTitle>Calculator</PageTitle>
+
+<h2 class="h2 text-center head_title" style=color: #1a1625>CALCULATRICE</h2>
+
+<input class="input-group-text form-control" type="number" min="0" style="margin-top: 100px;" @bind=user>
+
+<div id="mirror">
+
+    <div>
+        <p>
+            Opération: @enterednums</p>
+        <p>Résultat: @result</p>
+    </div>
+</div>
+
+<div class="grid-container">
+    <!-- Button pour numéro 1 -->
+    <div class="grid-item"><button type="button" class="btn  btn-danger custom-btn" @onclick=numOne> <svg
+                xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-1-circle"
+                viewBox="0 0 16 16">
+                <path
+                    d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M9.283 4.002V12H7.971V5.338h-.065L6.072 6.656V5.385l1.899-1.383z" />
+            </svg></button></div>
+
+    <!-- Button pour numéro 2 -->
+    <div class="grid-item"><button type="button" class="btn  btn-danger custom-btn" @onclick=numTwo> <svg
+                xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-2-circle"
+                viewBox="0 0 16 16">
+                <path
+                    d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.646 6.24v.07H5.375v-.064c0-1.213.879-2.402 2.637-2.402 1.582 0 2.613.949 2.613 2.215 0 1.002-.6 1.667-1.287 2.43l-.096.107-1.974 2.22v.077h3.498V12H5.422v-.832l2.97-3.293c.434-.475.903-1.008.903-1.705 0-.744-.557-1.236-1.313-1.236-.843 0-1.336.615-1.336 1.306" />
+            </svg></button></div>
+
+    <!-- Button pour numéro 3 -->
+    <div class="grid-item"><button type="button" class="btn  btn-danger custom-btn" @onclick=numThree><svg
+                xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-3-circle"
+                viewBox="0 0 16 16">
+                <path
+                    d="M7.918 8.414h-.879V7.342h.838c.78 0 1.348-.522 1.342-1.237 0-.709-.563-1.195-1.348-1.195-.79 0-1.312.498-1.348 1.055H5.275c.036-1.137.95-2.115 2.625-2.121 1.594-.012 2.608.885 2.637 2.062.023 1.137-.885 1.776-1.482 1.875v.07c.703.07 1.71.64 1.734 1.917.024 1.459-1.277 2.396-2.93 2.396-1.705 0-2.707-.967-2.754-2.144H6.33c.059.597.68 1.06 1.541 1.066.973.006 1.6-.563 1.588-1.354-.006-.779-.621-1.318-1.541-1.318" />
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8" />
+            </svg> </button></div>
+
+    <!-- Button pour numéro 4-->
+    <div class="grid-item"><button type="button" class="btn  btn-danger custom-btn" @onclick=numFour> <svg
+                xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-4-circle"
+                viewBox="0 0 16 16">
+                <path
+                    d="M7.519 5.057q.33-.527.657-1.055h1.933v5.332h1.008v1.107H10.11V12H8.85v-1.559H4.978V9.322c.77-1.427 1.656-2.847 2.542-4.265ZM6.225 9.281v.053H8.85V5.063h-.065c-.867 1.33-1.787 2.806-2.56 4.218" />
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8" />
+            </svg></button></div>
+
+    <!-- Button pour numéro 5 -->
+    <div class="grid-item"><button type="button" class="btn  btn-danger custom-btn" @onclick=numFive> <svg
+                xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-5-circle"
+                viewBox="0 0 16 16">
+                <path
+                    d="M1 8a7 7 0 1 1 14 0A7 7 0 0 1 1 8m15 0A8 8 0 1 0 0 8a8 8 0 0 0 16 0m-8.006 4.158c-1.57 0-2.654-.902-2.719-2.115h1.237c.14.72.832 1.031 1.529 1.031.791 0 1.57-.597 1.57-1.681 0-.967-.732-1.57-1.582-1.57-.767 0-1.242.45-1.435.808H5.445L5.791 4h4.705v1.103H6.875l-.193 2.343h.064c.17-.258.715-.68 1.611-.68 1.383 0 2.561.944 2.561 2.585 0 1.687-1.184 2.806-2.924 2.806Z" />
+            </svg> </button></div>
+
+    <!-- Button pour numéro 6 -->
+    <div class="grid-item"><button type="button" class="btn  btn-danger custom-btn" @onclick=numSix> <svg
+                xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-6-circle"
+                viewBox="0 0 16 16">
+                <path
+                    d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.21 3.855c1.612 0 2.515.99 2.573 1.899H9.494c-.1-.358-.51-.815-1.312-.815-1.078 0-1.817 1.09-1.805 3.036h.082c.229-.545.855-1.155 1.98-1.155 1.254 0 2.508.88 2.508 2.555 0 1.77-1.218 2.783-2.847 2.783-.932 0-1.84-.328-2.409-1.254-.369-.603-.597-1.459-.597-2.642 0-3.012 1.248-4.407 3.117-4.407Zm-.099 4.008c-.92 0-1.564.65-1.564 1.576 0 1.032.703 1.635 1.558 1.635.868 0 1.553-.533 1.553-1.629 0-1.06-.744-1.582-1.547-1.582" />
+            </svg> </button></div>
+
+    <!-- Button pour numéro 7 -->
+    <div class="grid-item"><button type="button" class="btn  btn-danger custom-btn" @onclick=numSeven> <svg
+                xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-7-circle"
+                viewBox="0 0 16 16">
+                <path
+                    d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.37 5.11V4.001h5.308V5.15L7.42 12H6.025l3.317-6.82v-.07H5.369Z" />
+            </svg> </button></div>
+
+    <!-- Button pour numéro 8 -->
+    <div class="grid-item"><button type="button" class="btn  btn-danger custom-btn" @onclick=numEight><svg
+                xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-8-circle"
+                viewBox="0 0 16 16">
+                <path
+                    d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-5.03 1.803c0 1.394-1.218 2.355-2.988 2.355-1.763 0-2.953-.955-2.953-2.344 0-1.271.95-1.851 1.647-2.003v-.065c-.621-.193-1.33-.738-1.33-1.781 0-1.225 1.09-2.121 2.66-2.121s2.654.896 2.654 2.12c0 1.061-.738 1.595-1.336 1.782v.065c.703.152 1.647.744 1.647 1.992Zm-4.347-3.71c0 .739.586 1.255 1.383 1.255s1.377-.516 1.377-1.254c0-.733-.58-1.23-1.377-1.23s-1.383.497-1.383 1.23Zm-.281 3.645c0 .838.72 1.412 1.664 1.412.943 0 1.658-.574 1.658-1.412 0-.843-.715-1.424-1.658-1.424-.944 0-1.664.58-1.664 1.424" />
+            </svg> </button></div>
+
+    <!-- Button pour numéro 9 -->
+    <div class="grid-item"><button type="button" class="btn  btn-danger custom-btn" @onclick=numNine> <svg
+                xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-9-circle"
+                viewBox="0 0 16 16">
+                <path
+                    d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-8.223 4.146c-1.593 0-2.425-.89-2.52-1.798h1.296c.1.357.539.72 1.248.72 1.36 0 1.88-1.353 1.834-3.023h-.076c-.235.627-.873 1.184-1.934 1.184-1.395 0-2.566-.961-2.566-2.666 0-1.711 1.242-2.731 2.87-2.731 1.512 0 2.971.867 2.971 4.014 0 2.836-1.02 4.3-3.123 4.3m.118-3.972c.808 0 1.535-.528 1.535-1.594s-.668-1.676-1.56-1.676c-.838 0-1.517.616-1.517 1.659 0 1.072.708 1.61 1.54 1.61Z" />
+            </svg> </button></div>
+
+    <div class="grid-item">
+        <!-- Button pour rafraîchissement du calcul -->
+        <button type="button" class="btn btn-lg btn-primary" @onclick=Refresh><svg xmlns="http://www.w3.org/2000/svg"
+                width="25" height="25" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z" />
+                <path
+                    d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466" />
+            </svg></button>
+    </div>
+
+    <!-- Button pour 0 -->
+    <div class="grid-item"><button type="button" class="btn  btn-danger custom-btn" @onclick=numZero> <svg
+                xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-0-circle"
+                viewBox="0 0 16 16">
+                <path
+                    d="M7.988 12.158c-1.851 0-2.941-1.57-2.941-3.99V7.84c0-2.408 1.101-3.996 2.965-3.996 1.857 0 2.935 1.57 2.935 3.996v.328c0 2.408-1.101 3.99-2.959 3.99M8 4.951c-1.008 0-1.629 1.09-1.629 2.895v.31c0 1.81.627 2.895 1.629 2.895s1.623-1.09 1.623-2.895v-.31c0-1.8-.621-2.895-1.623-2.895" />
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8" />
+            </svg></button></div>
+
+    <!-- Button pour diviser des numéros-->
+    <div class="grid-item">
+        <button type="button" class="btn btn-lg btn-primary" @onclick=divideNum><svg xmlns="http://www.w3.org/2000/svg"
+                width="25" height="25" fill="currentColor" class="bi bi-slash" viewBox="0 0 16 16">
+                <path d="M11.354 4.646a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708l6-6a.5.5 0 0 1 .708 0" />
+            </svg></button>
+    </div>
+
+    <!-- Button pour ajouter des numéros -->
+    <div class="grid-item">
+        <button type="button" class="btn btn-lg btn-primary" @onclick=addNum><svg xmlns="http://www.w3.org/2000/svg"
+                width="25" height="25" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                <path
+                    d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
+            </svg></button>
+    </div>
+
+    <!-- Button pour sustraire des numéros -->
+    <div class="grid-item"><button type="button" class="btn btn-lg btn-primary" @onclick=subtractNum><svg
+                xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-dash"
+                viewBox="0 0 16 16">
+                <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8" />
+            </svg></button></div>
+
+    <!-- Button pour multiplier les numéros -->
+    <div class="grid-item"><button type="button" class="btn btn-lg btn-primary" @onclick=multiplyNum><svg
+                xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-x"
+                viewBox="0 0 16 16">
+                <path
+                    d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+            </svg></button></div>
+</div>
+
+<div class="d-grid gap-2 col-6 mx-auto" style="width: 194px; margin-top: 8px;" @onclick=isEqual>
+    <button class="btn btn-secondary" type="button">=</button>
+
+</div>
+
+
+
+
+
+@code {
+    double user;
+    double equals;
+    double result;
+    double refresh;
+    string enterednums = string.Empty;
+    bool isFirstInput = true;
+    bool firstInput;
+    // Variables pour les numéros
+    double one = 1;
+    double two = 2;
+    double three = 3;
+    double four = 4;
+    double five = 5;
+    double six = 6;
+    double seven = 7;
+    double eight = 8;
+    double nine = 9;
+
+    double zero = 0;
+
+    double equal;
+    bool isPlusclicked;
+
+
+    string adding = "+";
+    string subtract = "-";
+    string multiply = "x";
+    string divide = "/";
+
+    // Fonction pour ajouter des numéros
+
+    void addNum()
+    {
+        if (isFirstInput)
+        {
+            result = user;
+            enterednums = adding;
+            isFirstInput = false;
+            enterednums = adding;
+        }
+        else
+        {
+
+            result += user;
+
+        }
+        user = 0;
+    }
+
+
+
+    // Fonction pour sustraire des numéros
+
+    void subtractNum()
+    {
+        if (isFirstInput)
+        {
+            result = user;
+
+            isFirstInput = false;
+            enterednums = subtract;
+        }
+        else
+        {
+            result -= user;
+
+        }
+        user = 0;
+    }
+
+
+
+    // Fonction pour multiplier des numéros
+    void multiplyNum()
+    {
+        if (isFirstInput)
+        {
+            result = user;
+
+            isFirstInput = false;
+            enterednums = multiply;
+        }
+        else
+        {
+            result *= user;
+
+        }
+        user = 0;
+    }
+
+    // Fonction pour diviser des numéros
+    void divideNum()
+    {
+        if (isFirstInput)
+        {
+            result = user;
+
+            isFirstInput = false;
+            enterednums = divide;
+        }
+        else
+        {
+            result = result / user;
+
+        }
+        user = 0;
+    }
+
+
+    // Finction pour le button
+    void isEqual()
+    {
+        if (isFirstInput == false && enterednums == adding)
+        {
+            result += user;
+            user = result;
+            isFirstInput = true;
+        }
+        else if (isFirstInput == false && enterednums == subtract)
+        {
+            result -= user;
+            user = result;
+            isFirstInput = true;
+        }
+        else if (isFirstInput == false && enterednums == multiply)
+        {
+            result = result * user;
+            user = result;
+            isFirstInput = true;
+        }
+        else if (isFirstInput == false && enterednums == divide)
+        {
+            result = result / user;
+            user = result;
+            isFirstInput = true;
+        }
+
+    }
+    private void numOne()
+    {
+        if (firstInput)
+        {
+            user = one;
+
+
+            firstInput = false;
+
+        }
+        else
+        {
+            user = user * 10 + 1;
+
+
+        }
+    }
+    private void numTwo()
+    {
+        if (firstInput)
+        {
+            user = two;
+
+
+            firstInput = false;
+
+        }
+        else
+        {
+            user = user * 10 + 2;
+
+
+        }
+    }
+    private void numThree()
+    {
+        if (firstInput)
+        {
+            user = three;
+
+
+            firstInput = false;
+
+        }
+        else
+        {
+            user = user * 10 + 3;
+
+
+        }
+
+
+
+    }
+    private void numFour()
+    {
+        if (firstInput)
+        {
+            user = four;
+
+
+            firstInput = false;
+
+        }
+        else
+        {
+            user = user * 10 + 4;
+
+
+        }
+    }
+    private void numFive()
+    {
+        if (firstInput)
+        {
+            user = five;
+
+
+            firstInput = false;
+
+        }
+        else
+        {
+            user = user * 10 + 5;
+
+
+        }
+    }
+    private void numSix()
+    {
+        if (firstInput)
+        {
+            user = six;
+
+
+            firstInput = false;
+
+        }
+        else
+        {
+            user = user * 10 + 6;
+
+
+        }
+    }
+    private void numSeven()
+    {
+        if (firstInput)
+        {
+            user = seven;
+
+
+            firstInput = false;
+
+        }
+        else
+        {
+            user = user * 10 + 7;
+
+
+        }
+    }
+    private void numEight()
+    {
+        if (firstInput)
+        {
+            user = eight;
+
+
+            firstInput = false;
+
+        }
+        else
+        {
+            user = user * 10 + 8;
+
+
+        }
+    }
+    private void numNine()
+    {
+        if (firstInput)
+        {
+            user = nine;
+
+
+            firstInput = false;
+
+        }
+        else
+        {
+            user = user * 10 + 9;
+
+
+        }
+    }
+    private void numZero()
+    {
+        if (firstInput)
+        {
+            user = zero;
+
+
+            firstInput = false;
+
+        }
+        else
+        {
+            user = user * 10 + 0;
+
+
+        }
+    }
+
+
+
+
+    // Fonction de rafraîchissement du calcul
+    void Refresh()
+    {
+        isFirstInput = true;
+        user = 0;
+        result = 0;
+        enterednums = string.Empty;
+    }
+}
